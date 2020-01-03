@@ -1,0 +1,193 @@
+Q1
+know(sophie,harry).
+know(arthur,sophie).
+know(sophie,emma).
+know(emma,teddy).
+know(grace,lucas).
+know(harry,grace).
+know(teddy,harry).
+
+use(sophie,facebook).
+use(sophie,instagram).
+use(teddy,whatsapp).
+use(lucas,skype).
+use(emma,facebook).
+use(grace,whatsapp).
+use(grace,facebook).
+use(harry,facebook).
+
+allow(whatsapp,photo).
+allow(whatsapp,talk).
+allow(whatsapp,chat).
+allow(instagram,photo).
+allow(facebook,chat).
+allow(facebook,photo).
+allow(skype,talk).
+
+Q2
+a)
+?- allow(instagram,photo).
+true.
+b)
+?- allow(instagram,talk).
+false.
+c)
+?- allow(whatsapp,X).
+X = photo ;
+X = talk ;
+X = chat.
+d)
+?- allow(X,talk).
+X = whatsapp ;
+X = skype.
+
+e)
+?- use(teddy,whatsapp).
+true.
+
+f)
+?- use(grace,X).
+X = whatsapp ;
+X = facebook.
+
+g)
+?- use(X,facebook),use(X,instagram).
+X = sophie ;
+false.
+
+h)
+?- use(X,facebook).
+X = sophie ;
+X = emma ;
+X = grace ;
+X = harry.
+
+i)
+?- allow(X,talk),allow(Y,talk), X\==Y.
+X = whatsapp,
+Y = skype ;
+X = skype,
+Y = whatsapp ;
+false.
+
+Q3
+a)
+?- rule1(lucas,talk).
+true.
+
+?- rule1(X,talk).
+X = teddy ;
+X = lucas ;
+X = grace ;
+false.
+
+b)
+?- rule2(emma,sophie).
+true.
+
+?- rule2(emma,grace).
+false.
+
+?- rule2(grace,X).
+X = lucas ;
+X = harry.
+
+c)
+?- rule4(emma).
+teddy
+sophie
+true.
+
+?- rule4(sophie).
+harry
+emma
+arthur
+true.
+
+?- rule4(bob).
+true.
+
+d)
+?- rule5(talk).
+teddy
+grace
+lucas
+true.
+
+?- rule5(video).
+true.
+
+e)
+?- rule6(sophie,emma).
+true .
+
+?- rule6(harry,emma).
+true .
+
+?- rule6(harry,lucas).
+false.
+
+?- rule6(lucas,Y).
+false.
+
+?- rule6(grace,Y).
+Y = harry ;
+Y = sophie ;
+Y = grace.
+
+f)
+?- rule7(grace).
+Name - grace
+whatsapp
+facebook
+lucas
+harry
+true.
+?- rule7(grace).
+Name - grace
+whatsapp
+facebook
+lucas
+harry
+true.
+
+Q4)
+a)
+men(harry).
+men(lucas).
+men(teddy).
+men(arthur).
+worman(sophie).
+worman(emma).
+worman(grace).
+
+b)
+?- rule8(harry,Y).
+Y = teddy ;
+false.
+?- rule8(lucas,Y).
+false.
+?- rule8(sophie,Y).
+false.
+
+c)
+?- rule9(harry,emma).
+true .
+?- rule9(grace,X).
+X = teddy .
+?- rule9(harry,X).
+X = emma ;
+false.
+
+d)
+?- rule10(grace,sophie).
+true .
+?- rule10(sophie,X).
+X = emma ;
+X = grace ;
+false.
+?- rule10(emma,X).
+X = sophie ;
+false.
+?- rule10(harry,X).
+false.
